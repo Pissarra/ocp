@@ -4,7 +4,7 @@ public class AnimalFunctionalInterface {
 
     public static void main(String[] args) {
         check(new Tiger(), a -> a.canRun());
-        check(null, a -> a != null);
+        check(null, a -> false);
     }
 
     public static void check(Tiger tiger, Animal animal) {
