@@ -7,28 +7,31 @@ import java.util.List;
 public class Generics {
 
     public static void main(String[] args) {
-        List<? super Number> listaSuperNumeros = new ArrayList<>();
-        listaSuperNumeros.add(1);
+        List<? super Number> listSuperNumber = new ArrayList<>();
+        listSuperNumber.add(1);
 
         Integer n = new Integer(1);
 
-        List<? extends Number> listaExtendsNumeros = new ArrayList<Integer>();
+        List<? extends Number> listExtendsNumber = new ArrayList<Integer>();
 
         // Nao compila o codigo abaixo porque sao imutaveis
-//        listaExtendsNumeros.add(new Integer(1));
-//        listaExtendsNumeros.add(1);
+//        listExtendsNumber.add(new Integer(1));
+//        listExtendsNumber.add(1);
 
         // stranger things
 
 
-        // ? super Class   -> qualquer classe filha de Class
-        // ? extends Class -> qualquer classe pai de Class
+        // ? super Class   -> nao eh imutavel, pode add ou remove
+        // ? extends Class e <?> -> eh imutavel
 
         testGenericsWithExtends(Arrays.asList(1,2,3));
+
+        // Nao compila o codigo abaixo
+//        List<Object> list = new ArrayList<String>();
     }
 
-    private static void testGenericsWithExtends(List<? extends Number> parametros) {
-        for (Object o : parametros) {
+    private static void testGenericsWithExtends(List<? extends Number> parameters) {
+        for (Object o : parameters) {
             System.out.println(o);
         }
     }
