@@ -1,5 +1,6 @@
 package br.com.ocp.chapter3;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public class Generics {
 
     public static void main(String[] args) {
-        List<? super Number> listSuperNumber = new ArrayList<>();
+        List<? super Number> listSuperNumber = new ArrayList<Number>();
         listSuperNumber.add(1);
 
         Integer n = new Integer(1);
@@ -28,11 +29,15 @@ public class Generics {
 
         // Nao compila o codigo abaixo
 //        List<Object> list = new ArrayList<String>();
+
+
+        List<? super IOException> l = new ArrayList<Exception>();
+        l.add(new IOException());
+        // Nao compila
+//        l.add(new Exception());
     }
 
     private static void testGenericsWithExtends(List<? extends Number> parameters) {
-        for (Object o : parameters) {
-            System.out.println(o);
-        }
+        parameters.forEach(it -> System.out.println(it));
     }
 }
